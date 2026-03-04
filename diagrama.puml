@@ -1,0 +1,74 @@
+@startuml
+class DonkeyKong
+class DiddyKong
+class Rambi
+class Enguarde
+class Expresso
+class CrankyKong
+class Winky
+class Martillo 
+class Sombrilla
+class Bolso
+class Sombrero 
+class BananaSuelta
+class RacimoBananas
+class MonedaBanana
+class  MonedaDK
+class MonedaHeroe 
+class GloboRojo
+class GloboVerde
+class GloboAzul
+class Barril
+class Estrella
+class BarrilTNT
+class BarrilAcero
+class BarrilCañon
+class BarrilInvisibilidad
+class Crate
+class FichaRambi
+class FichaEnguarde
+class FichaExpresso
+class FichaWinky
+class FichaAnimal
+class K
+class O
+class N
+class G
+class Cofredeltesoro
+class BastonCranky
+class Jugador 
+class Nivel
+class Mundo 
+class Partida
+DonkeyKong --|> Personaje
+DiddyKong --|> Personaje
+Rambi --|> AnimalAmigo
+Enguarde --|> AnimalAmigo
+Expresso --|> AnimalAmigo
+Winky --|> AnimalAmigo
+BarrilTNT --|> Barril
+BarrilAcero --|> Barril
+BarrilDK --|> Barril
+BarrilEstrella --|> Barril
+Jugador *-- GloboRojo
+Jugador *-- Inventario
+Nivel *-- K 
+Nivel *-- O 
+Nivel *-- N 
+Nivel *-- G 
+CrankyKong *-- BastonCranky
+Mundo *-- MonedaDK
+Nivel *-- Bonus
+Partida *-- ContadordeBananas
+DonkeyKong o-- Martillo
+Personaje o-- Banana
+Personaje o-- RacimoBananas
+Personaje o-- MonedaBanana
+Personaje o-- Barril
+AnimalAmigo o-- CofredelTesoro
+Personaje o-- GloboVerde
+Personaje o-- GloboAzul
+Personaje o-- FichaAnimal
+DonkeyKong o-- BarrilCañon
+
+@enduml
