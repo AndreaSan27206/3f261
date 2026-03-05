@@ -1,74 +1,67 @@
 @startuml
-class DonkeyKong
+
+' --- CLASES DE PERSONAJES ---
+abstract class Personaje {
+  + int vida
+}
+abstract class AnimalAmigo
+
+class DonkeyKong {
+  + Lanzar(Barril objeto)
+  + Golpear(Martillo herramienta)
+}
 class DiddyKong
-class Rambi
-class Enguarde
-class Expresso
 class CrankyKong
-class Winky
-class Martillo 
-class Sombrilla
-class Bolso
-class Sombrero 
-class BananaSuelta
-class RacimoBananas
-class MonedaBanana
-class  MonedaDK
-class MonedaHeroe 
-class GloboRojo
-class GloboVerde
-class GloboAzul
-class Barril
-class Estrella
+
+' --- OBJETOS E ITEMS ---
+class Barril {
+  + float peso
+  + float potenciaLanzamiento
+}
 class BarrilTNT
 class BarrilAcero
 class BarrilCañon
-class BarrilInvisibilidad
-class Crate
-class FichaRambi
-class FichaEnguarde
-class FichaExpresso
-class FichaWinky
-class FichaAnimal
-class K
-class O
-class N
-class G
-class Cofredeltesoro
+class Martillo
 class BastonCranky
-class Jugador 
+
+' --- ANIMALES ---
+class Rambi
+class Enguarde
+class Expresso
+class Winky
+
+' --- OTROS ELEMENTOS ---
+class MonedaDK
 class Nivel
-class Mundo 
+class Mundo
 class Partida
+
+' --- RELACIONES "ES" (Herencia) ---
 DonkeyKong --|> Personaje
 DiddyKong --|> Personaje
+CrankyKong --|> Personaje
+
 Rambi --|> AnimalAmigo
 Enguarde --|> AnimalAmigo
 Expresso --|> AnimalAmigo
 Winky --|> AnimalAmigo
+
 BarrilTNT --|> Barril
 BarrilAcero --|> Barril
-BarrilDK --|> Barril
-BarrilEstrella --|> Barril
-Jugador *-- GloboRojo
-Jugador *-- Inventario
-Nivel *-- K 
-Nivel *-- O 
-Nivel *-- N 
-Nivel *-- G 
-CrankyKong *-- BastonCranky
-Mundo *-- MonedaDK
-Nivel *-- Bonus
-Partida *-- ContadordeBananas
-DonkeyKong o-- Martillo
-Personaje o-- Banana
-Personaje o-- RacimoBananas
-Personaje o-- MonedaBanana
-Personaje o-- Barril
-AnimalAmigo o-- CofredelTesoro
-Personaje o-- GloboVerde
-Personaje o-- GloboAzul
-Personaje o-- FichaAnimal
-DonkeyKong o-- BarrilCañon
+
+' --- RELACIONES "TIENE" (Composición) ---
+CrankyKong "1" *-- "1" BastonCranky
+Nivel "1" *-- "1" K
+' (Otras letras K-O-N-G irían aquí)
+
+' --- RELACIONES "USA" (Agregación + Acción Objeto Entrada) ---
+' Aquí aplicamos lo del pizarrón:
+' Acción: Lanzar (termina en -ar) 
+' Objeto de entrada: Barril
+DonkeyKong o-- Barril : "Lanzar(barril)"
+DonkeyKong o-- Martillo : "Golpear(martillo)"
+
+Personaje o-- MonedaDK : "Recolectar(moneda)"
+AnimalAmigo o-- Cofredeltesoro : "Abrir(cofre)"
 
 @enduml
