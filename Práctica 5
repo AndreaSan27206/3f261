@@ -1,0 +1,80 @@
+@startuml
+
+' --- CLASES ---
+class DonkeyKong
+class DiddyKong
+class Rambi
+class Enguarde
+class Expresso
+class Winky
+class CrankyKong
+class Personaje
+class AnimalAmigo
+
+class Martillo 
+class Barril
+class BarrilTNT
+class BarrilAcero
+class BarrilCañon
+class BarrilDK
+class BarrilEstrella
+
+class K
+class O
+class N
+class G
+
+class Jugador 
+class Nivel
+class Mundo 
+class Partida
+
+' --- HERENCIA ---
+DonkeyKong --|> Personaje
+DiddyKong --|> Personaje
+Rambi --|> AnimalAmigo
+Enguarde --|> AnimalAmigo
+Expresso --|> AnimalAmigo
+Winky --|> AnimalAmigo
+
+BarrilTNT --|> Barril
+BarrilAcero --|> Barril
+BarrilDK --|> Barril
+BarrilEstrella --|> Barril
+
+' --- COMPOSICIÓN  ---
+ "Koopa *-- Vida" (Si el padre muere, el hijo también)
+Jugador "1" *-- "*" GloboRojo
+Jugador "1" *-- "1" Inventario
+
+Nivel "1" *-- "1" K 
+Nivel "1" *-- "1" O 
+Nivel "1" *-- "1" N 
+Nivel "1" *-- "1" G 
+Nivel "1" *-- "*" Bonus
+
+CrankyKong "1" *-- "1" BastonCranky
+Mundo "1" *-- "*" MonedaDK
+Partida "1" *-- "1" ContadordeBananas
+
+' --- AGREGACIÓN E INTERACCIONES ---
+"Mario o-- Koopa" 
+DonkeyKong "1" o-- "0..1" Martillo : Golpear()
+Personaje "1" o-- "*" BananaSuelta : Recolectar()
+Personaje "1" o-- "*" RacimoBananas : Recolectar()
+Personaje "1" o-- "*" MonedaBanana : Comprar()
+Personaje "1" o-- "0..1" Barril : Lanzar()
+AnimalAmigo "1" o-- "1..*" Cofredeltesoro : Abrir()
+Personaje "1" o-- "0..*" GloboVerde : GanarVida()
+Personaje "1" o-- "0..*" GloboAzul : GanarVida()
+Personaje "1" o-- "0..*" FichaAnimal : Coleccionar()
+DonkeyKong "1" o-- "*" BarrilCañon : Disparar()
+
+--- ATRIBUTOS Y MÉTODOS ---
+Personaje : vida
+Personaje : Morir()
+
+DonkeyKong : Saltar()
+DiddyKong : Maroma()
+
+@enduml
